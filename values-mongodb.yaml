@@ -1,0 +1,10 @@
+mongodb:
+ uri: "mongodb://mongodb-service:27017"
+serviceMonitor:
+ enabled: true
+ additionalLabels:
+  release: kube-prometheus-stack-1681100602
+spec:
+ targets:
+ - name: mongodb
+   port: 9216

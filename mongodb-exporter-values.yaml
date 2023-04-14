@@ -1,0 +1,10 @@
+mongodb:
+  uri: "mongodb://adminuser:password123@mongo-nodeport-svc:27017"
+serviceMonitor:
+ enabled: true
+ additionalLabels:
+  release: kube-prometheus-stack-1681100602
+spec:
+ targets:
+ - name: mongo
+   port: 9216

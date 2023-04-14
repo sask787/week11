@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: kube-prometheus-stack-1681100602
+  name: mongodb-connection-rule
+spec:
+  groups:
+  - name: mongodb-connection-rule
+    rules:
+    - alert: mongo-connection-alert
+      annotations:
+        description: Memory on node {{ $labels.instance }} has more than 2 connections"
+        summary: MongoDB has more than 2 connections"
+      expr: |
+        mongodb_ss_connections > 2
+      for: 2m
+      labels:
+        severity: critical
